@@ -2,7 +2,7 @@ services:
   es01:
     container_name: ragflow-es-01
     profiles:
-      - elasticsearch
+#      - elasticsearch
     image: elasticsearch:${STACK_VERSION}
     volumes:
       - esdata01:/usr/share/elasticsearch/data
@@ -76,8 +76,8 @@ services:
   infinity:
     container_name: ragflow-infinity
     profiles:
-      - infinity
-    image: infiniflow/infinity:v0.6.0-dev5
+#      - infinity
+    image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/infiniflow/infinity:v0.5.2
     volumes:
       - infinity_data:/var/infinity
       - ./infinity_conf.toml:/infinity_conf.toml
@@ -135,7 +135,7 @@ services:
 
   mysql:
     # mysql:5.7 linux/arm64 image is unavailable.
-    image: mysql:8.0.39
+    image:swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/mysql:8.0.39
     container_name: ragflow-mysql
     env_file: .env
     environment:
@@ -164,7 +164,7 @@ services:
     restart: on-failure
 
   minio:
-    image: quay.io/minio/minio:RELEASE.2025-06-13T11-33-47Z
+    image: quay.io/minio/minio:RELEASE.2023-12-20T01-00-02Z
     container_name: ragflow-minio
     command: server --console-address ":9001" /data
     ports:
